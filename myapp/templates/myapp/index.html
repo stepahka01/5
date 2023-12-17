@@ -1,0 +1,158 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block title%} Homepage {% endblock %}
+
+
+{% block content %} 
+
+
+<section class="info-block">
+    <div class="info-centering">
+
+
+        <div class="info-text">
+            <p>- Стоматология в Чебоксарах</p>
+            <p class="info-title">Лечение зубов в тот же день</p>
+            <p>
+                Мы проведем полную консультацию, 
+                профессиональную гигиену полости рта, 
+                <br>лечение зубов и десен
+            </p>
+            <button class="appointment-button">
+                Записаться на приём
+            </button>
+        </div>
+
+
+
+        <ul class="info-about-wrapper">
+            <li class="info-about">
+                <div class="info-about-image">
+                    <img src="{% static "myapp/images/doctor-icon.png" %}" alt="">
+                </div>
+                <p>Команда квалифицированных специалистов</p>
+            </li>
+            <li class="info-about">
+                <div class="info-about-image">
+                    <img src="{% static "myapp/images/cabinets.png" %}" alt="">
+                </div>
+                <p>3 стоматологических<br>кабинета</p>
+            </li>
+            <li class="info-about">
+                <div class="info-about-image">
+                    <img src="{% static "myapp/images/location.png" %}" alt="">
+                </div>
+                <p>Удобное<br>расположение</p>
+            </li>
+        </ul>
+
+
+
+    </div>
+</section>
+
+
+
+<section class="services">
+    <div class="services-centering">
+        
+
+        <div class="services-text-wrapper">
+            <p class="services-title">
+                Услуги
+            </p>
+            <p>
+                Мы постарались сделать прайс максимально
+                простым и понятным
+            </p>
+        </div>
+
+
+        
+        <ul class="services-blocks-wrapper">
+            {% for service in services %}
+            <li class="service-blocks">
+                <div class="service-blocks-centering">
+                    <div>
+                        <img class="service-icon" src="{% static "myapp/images/tooth.png" %}" alt="">
+                    </div>
+                    <p>{{ service.name }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        
+
+
+
+    </div>
+</section>
+
+
+
+
+
+<section class="why-we">
+    <div class="why-we-centering">
+
+        <p class="why-we-title">
+            Нам доверяют пациенты
+        </p>
+
+
+        <ul class="why-we-blocks">
+            {% for cell in whyWe %}
+            <li class="why-we-block">
+                <div class="why-we-block-centering">
+                    <p class="why-we-id">{{cell.id}}</p>
+                    <p class="why-we-block-title">{{cell.title}}</p>
+                    <p class="why-we-text">{{cell.text}}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</section>
+
+
+
+
+{% include 'myapp/orderingCallForm.html' %}
+
+
+
+
+
+<section class="specialists">
+    <div class="specialists-centering">
+
+
+
+        <p class="specialists-title">Специалисты</p>
+        <p class="specialists-text">
+            Быстро и безболезненно, с предоставлением всего 
+            спектра стоматологических услуг
+        </p>
+
+        <ul class="specialists-blocks-wrapper">
+            {% for specialist in specialists %}
+            <li class="specialist-block">
+               <div class="specialist-centering">
+                    <p class="specialist-name">{{ specialist.name }}</p>
+                    <p class="specialist-post">{{ specialist.post }}</p>
+                    <p class="specialist-work-experience">{{ specialist.workExp}}</p>
+                    <img class="specialist-image" src="{% static 'myapp/images/specialist-woman.png' %}" alt="specialist-woman">
+               </div> 
+            </li>
+            {% endfor %}
+        </ul>
+
+    </div>
+</section>
+
+
+
+{% include 'myapp/orderingCallForm.html' %}
+
+{% endblock %}
